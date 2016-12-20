@@ -2,7 +2,7 @@ import {FileReaderHelper} from "../helpers/file-reader-helper"
 
 export class FileHandler
 {
-    constructor(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass)
+    constructor(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass, additionalData)
     {
         this.onLoaded = onLoaded;
         this.onProgress = onProgress;
@@ -11,10 +11,11 @@ export class FileHandler
         this.maxFileSize = maxFileSize;
         this.readAs = readAs;
         this.hoverClass = hoverClass || "file-hover";
+		this.additionalData = additionalData;
     }
 
     readFile = (file) => {
-        var reader = FileReaderHelper.createReader(file, this.onLoaded, this.onProgress, this.onError);
+        var reader = FileReaderHelper.createReader(file, this.onLoaded, this.onProgress, this.onError, this.additionalData);
 
         if(this.readAs == "text")
         { reader.readAsText(file); }

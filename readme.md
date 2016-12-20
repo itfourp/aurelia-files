@@ -28,12 +28,12 @@ A simple example of allowing a user to load a file and then callback with the (f
 // some VM
 export class SomeVM
 {
-	SomeFileLoadedCallback(file, data) {
+	SomeFileLoadedCallback(file, data, additionalData) {
 		// Do something with file (js file) and data (content of the file)
 	}
 	
 	// Remember if you need to access the *this* scope use
-	// SomeFileLoadedCallback = (file, data) => { ... }
+	// SomeFileLoadedCallback = (file, data, additionalData) => { ... }
 }
 
 ```
@@ -55,3 +55,4 @@ The available options for this binding are:
 * **read-as** - to indicate how you want to read the file, options are (text, image, binary, array), the default behaviour is image
 * **allow-drop** - to indicate you want to enable drag and drop functionality for files on this element
 * **hover-class** - the class to apply when you are hovering a file over the drag and drop compatible dropzone
+* **additional-data** - pass additional data into binded callbacks
