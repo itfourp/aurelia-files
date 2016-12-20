@@ -12,6 +12,7 @@ export class FilesAttribute {
   @bindable readAs;
   @bindable allowDrop;
   @bindable hoverClass;
+  @bindable additionalData;
 
   constructor(element) {
     this.element = element;
@@ -21,7 +22,7 @@ export class FilesAttribute {
     if(!this.onLoaded) { throw new Error("You must specify an onLoaded callback at minimum"); }
 
     var fileHandler = new FileHandler(this.onLoaded, this.onProgress, this.onError,
-        this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
+        this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass, this.additionalData);
     
     this.element.addEventListener('change', fileHandler.handleFileSelected, false);
 
