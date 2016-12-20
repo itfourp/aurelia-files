@@ -10,13 +10,13 @@ System.register(["../helpers/file-reader-helper"], function (_export) {
             FileReaderHelper = _helpersFileReaderHelper.FileReaderHelper;
         }],
         execute: function () {
-            FileHandler = function FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass) {
+            FileHandler = function FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass, additionalData) {
                 var _this = this;
 
                 _classCallCheck(this, FileHandler);
 
                 this.readFile = function (file) {
-                    var reader = FileReaderHelper.createReader(file, _this.onLoaded, _this.onProgress, _this.onError);
+                    var reader = FileReaderHelper.createReader(file, _this.onLoaded, _this.onProgress, _this.onError, _this.additionalData);
 
                     if (_this.readAs == "text") {
                         reader.readAsText(file);
@@ -73,6 +73,7 @@ System.register(["../helpers/file-reader-helper"], function (_export) {
                 this.maxFileSize = maxFileSize;
                 this.readAs = readAs;
                 this.hoverClass = hoverClass || "file-hover";
+                this.additionalData = additionalData;
             };
 
             _export("FileHandler", FileHandler);

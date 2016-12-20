@@ -62,6 +62,11 @@ System.register(['aurelia-framework', '../handlers/file-handler'], function (_ex
           decorators: [bindable],
           initializer: null,
           enumerable: true
+        }, {
+          key: 'additionalData',
+          decorators: [bindable],
+          initializer: null,
+          enumerable: true
         }], null, _instanceInitializers);
 
         function FilesAttribute(element) {
@@ -83,6 +88,8 @@ System.register(['aurelia-framework', '../handlers/file-handler'], function (_ex
 
           _defineDecoratedPropertyDescriptor(this, 'hoverClass', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'additionalData', _instanceInitializers);
+
           this.element = element;
         }
 
@@ -93,7 +100,7 @@ System.register(['aurelia-framework', '../handlers/file-handler'], function (_ex
               throw new Error("You must specify an onLoaded callback at minimum");
             }
 
-            var fileHandler = new FileHandler(this.onLoaded, this.onProgress, this.onError, this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass);
+            var fileHandler = new FileHandler(this.onLoaded, this.onProgress, this.onError, this.fileFilter, this.maxFileSize, this.readAs, this.hoverClass, this.additionalData);
 
             this.element.addEventListener('change', fileHandler.handleFileSelected, false);
 

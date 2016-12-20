@@ -16,21 +16,21 @@ define(["exports"], function (exports) {
 
         _createClass(FileReaderHelper, null, [{
             key: "createReader",
-            value: function createReader(file, onLoaded, onProgress, onError) {
+            value: function createReader(file, onLoaded, onProgress, onError, additionalData) {
                 var reader = new FileReader();
                 reader.onload = function (fileLoadedEvent) {
-                    onLoaded(file, fileLoadedEvent.target.result);
+                    onLoaded(file, fileLoadedEvent.target.result, additionalData);
                 };
 
-                if (typeof progressCallback == "function") {
+                if (typeof onProgress == "function") {
                     reader.onprogress = function (fileProgressEvent) {
-                        onProgress(file, fileProgressEvent.loaded, fileProgressEvent.total);
+                        onProgress(file, fileProgressEvent.loaded, fileProgressEvent.total, additionalData);
                     };
                 }
 
-                if (typeof errorCallback == "function") {
+                if (typeof onError == "function") {
                     reader.onerror = function (fileErrorEvent) {
-                        onError(file, fileErrorEvent.target.error);
+                        onError(file, fileErrorEvent.target.error, additionalData);
                     };
                 }
 

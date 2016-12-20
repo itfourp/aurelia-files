@@ -7,13 +7,13 @@ define(["exports", "../helpers/file-reader-helper"], function (exports, _helpers
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    var FileHandler = function FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass) {
+    var FileHandler = function FileHandler(onLoaded, onProgress, onError, fileFilter, maxFileSize, readAs, hoverClass, additionalData) {
         var _this = this;
 
         _classCallCheck(this, FileHandler);
 
         this.readFile = function (file) {
-            var reader = _helpersFileReaderHelper.FileReaderHelper.createReader(file, _this.onLoaded, _this.onProgress, _this.onError);
+            var reader = _helpersFileReaderHelper.FileReaderHelper.createReader(file, _this.onLoaded, _this.onProgress, _this.onError, _this.additionalData);
 
             if (_this.readAs == "text") {
                 reader.readAsText(file);
@@ -70,6 +70,7 @@ define(["exports", "../helpers/file-reader-helper"], function (exports, _helpers
         this.maxFileSize = maxFileSize;
         this.readAs = readAs;
         this.hoverClass = hoverClass || "file-hover";
+        this.additionalData = additionalData;
     };
 
     exports.FileHandler = FileHandler;
