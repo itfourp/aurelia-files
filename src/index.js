@@ -1,3 +1,7 @@
-export function configure(aurelia) {
-    aurelia.globalResources("./attributes/files-attribute");
+import {PLATFORM} from 'aurelia-pal';
+
+export function configure(config) {
+    config.globalResources([
+        PLATFORM.moduleName("./attributes/files-attribute")
+    ]);
 }
